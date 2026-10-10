@@ -1,7 +1,3 @@
-/**
- * Clase abstracta intermedia: agrupa lo que comparten los eventos del campus.
- * No implementa jugarCarta(): cada evento concreto define su efecto sobre el tablero.
- */
 public abstract class EventoCampus extends Carta {
     private int magnitud;
 
