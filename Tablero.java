@@ -3,7 +3,7 @@ import java.util.List;
 
 public class Tablero {
     private List<Jugador> jugadores;
-    private int turno;   // índice del jugador actual
+    private int turno;   
 
     public Tablero(Jugador... jugadores) {
         this.jugadores = new ArrayList<>(List.of(jugadores));
@@ -14,13 +14,11 @@ public class Tablero {
         return jugadores.get(turno);
     }
 
-    /** El rival es el siguiente jugador en el orden de turnos. */
     public Jugador getRival(Jugador jugador) {
         int i = jugadores.indexOf(jugador);
         return jugadores.get((i + 1) % jugadores.size());
     }
 
-    /** Pasa al siguiente jugador, que recupera 1 de energía al empezar su turno. */
     public Jugador siguienteTurno() {
         turno = (turno + 1) % jugadores.size();
         Jugador actual = getJugadorActual();
@@ -28,7 +26,6 @@ public class Tablero {
         return actual;
     }
 
-    /** Efecto de tablero: delta positivo suma energía a todos, negativo la resta. */
     public void modificarEnergiaATodos(int delta) {
         for (Jugador j : jugadores) {
             if (delta >= 0) j.ganarEnergia(delta);
