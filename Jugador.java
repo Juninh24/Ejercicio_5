@@ -4,7 +4,7 @@ import java.util.List;
 public class Jugador {
     private String nombre;
     private int energia;
-    private List<Carta> mano;   // polimórfica: puede tener cualquier tipo de Carta
+    private List<Carta> mano;   
 
     public Jugador(String nombre) {
         this(nombre, 5);
@@ -26,10 +26,6 @@ public class Jugador {
         energia = Math.max(0, energia - cantidad);
     }
 
-    /**
-     * Usa una carta de la mano: valida energía, paga el costo y ejecuta su efecto.
-     * Aquí está el polimorfismo: no importa qué tipo de carta sea, se llama igual.
-     */
     public String usarCarta(Carta carta, Tablero tablero) {
         if (!mano.contains(carta)) {
             return "Esa carta no está en tu mano.";
@@ -42,7 +38,6 @@ public class Jugador {
         return carta.jugarCarta(this, tablero);
     }
 
-    /** Sobrecarga: usar la carta por su posición (1, 2, 3...) en la mano. */
     public String usarCarta(int posicion, Tablero tablero) {
         if (posicion < 1 || posicion > mano.size()) {
             return "Posición inválida.";
@@ -50,7 +45,6 @@ public class Jugador {
         return usarCarta(mano.get(posicion - 1), tablero);
     }
 
-    /** Toma una carta del mazo. Devuelve false si el mazo ya no tiene cartas. */
     public boolean tomarCarta(Mazo mazo) {
         Carta c = mazo.robar();
         if (c == null) return false;
