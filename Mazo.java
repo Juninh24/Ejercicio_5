@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Random;
 
 public class Mazo {
-    // LA lista polimórfica del programa: guarda todos los tipos de carta juntos.
     private List<Carta> cartas;
     private Random random;
 
@@ -19,10 +18,6 @@ public class Mazo {
         this.random = new Random();
     }
 
-    /**
-     * Carga inicial: crea 'cantidad' cartas aleatorias (mínimo 10 según el enunciado).
-     * Las primeras 4 son una de cada tipo, para asegurar variedad.
-     */
     public void cargarInicial(int cantidad) {
         cantidad = Math.max(cantidad, 10);
         for (int id = 1; id <= cantidad; id++) {
@@ -52,7 +47,6 @@ public class Mazo {
         }
     }
 
-    /** Sobrecarga 1: buscar por ID. Devuelve null si no existe. */
     public Carta buscar(int id) {
         for (Carta c : cartas) {
             if (c.getId() == id) return c;
@@ -60,7 +54,6 @@ public class Mazo {
         return null;
     }
 
-    /** Sobrecarga 2: buscar por nombre (ignora mayúsculas y acepta coincidencias parciales). */
     public Carta buscar(String nombre) {
         for (Carta c : cartas) {
             if (c.getNombre().toLowerCase().contains(nombre.toLowerCase())) return c;
@@ -68,12 +61,10 @@ public class Mazo {
         return null;
     }
 
-    /** Ordena de menor a mayor costo de energía, usando el compareTo de Carta. */
     public void ordenarPorEnergia() {
         Collections.sort(cartas);
     }
 
-    /** Saca una carta al azar del mazo. Devuelve null si está vacío. */
     public Carta robar() {
         if (cartas.isEmpty()) return null;
         return cartas.remove(random.nextInt(cartas.size()));
