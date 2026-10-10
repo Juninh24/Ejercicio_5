@@ -11,7 +11,6 @@ public class Catedratico extends Carta {
         this.tiempoDeAtencion = tiempoDeAtencion;
     }
 
-    /** El rival pierde energía (llamadas de atención) y quien la juega recupera energía (tiempo de atención). */
     @Override
     public String jugarCarta(Jugador jugador, Tablero tablero) {
         Jugador rival = tablero.getRival(jugador);
