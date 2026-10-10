@@ -9,7 +9,6 @@ public class Curso extends Carta {
         this.nivelDificultad = nivelDificultad;
     }
 
-    /** Quien la juega gana tanta energía como créditos aporta el curso. */
     @Override
     public String jugarCarta(Jugador jugador, Tablero tablero) {
         jugador.ganarEnergia(creditos);
