@@ -11,7 +11,7 @@ public class Main {
         Jugador j1 = new Jugador("Jugador 1");
         Jugador j2 = new Jugador("Jugador 2");
         Tablero tablero = new Tablero(j1, j2);
-        for (int i = 0; i < 3; i++) {   // mano inicial de 3 cartas
+        for (int i = 0; i < 3; i++) {   
             j1.tomarCarta(mazo);
             j2.tomarCarta(mazo);
         }
@@ -52,7 +52,6 @@ public class Main {
         } while (opcion != 0);
     }
 
-    /** Cada acción (usar, tomar o pasar) consume el turno del jugador actual. */
     private static void jugar(Mazo mazo, Tablero tablero) {
         int op;
         do {
@@ -73,7 +72,7 @@ public class Main {
                     int manoAntes = actual.getMano().size();
                     String resultado = actual.usarCarta(pos, tablero);
                     System.out.println(resultado);
-                    if (actual.getMano().size() < manoAntes) {   // la carta se jugó de verdad
+                    if (actual.getMano().size() < manoAntes) { 
                         tablero.siguienteTurno();
                     }
                     break;
@@ -106,7 +105,6 @@ public class Main {
         }
     }
 
-    /** Lee un entero sin que el programa se caiga si el usuario escribe letras. */
     private static int leerEntero(String mensaje) {
         System.out.print(mensaje);
         try {
