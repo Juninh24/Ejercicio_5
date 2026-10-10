@@ -1,7 +1,3 @@
-/**
- * Clase abstracta: la base común de todas las cartas.
- * No existe una "carta genérica" en el juego, por eso no se puede instanciar.
- */
 public abstract class Carta implements Comparable<Carta> {
     private final int id;
     private String nombre;
@@ -15,10 +11,6 @@ public abstract class Carta implements Comparable<Carta> {
         this.descripcion = descripcion;
     }
 
-    /**
-     * Método polimórfico: cada tipo de carta tiene su propio efecto.
-     * Devuelve un texto que describe lo que pasó, para que quien lo llame lo muestre.
-     */
     public abstract String jugarCarta(Jugador jugador, Tablero tablero);
 
     public int getId() { return id; }
